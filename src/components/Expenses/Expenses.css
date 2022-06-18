@@ -3,3 +3,7 @@
   width: 50rem;
   max-width: 95%;
 }
+
+.expenses__empty-message {
+  color: #FFF;
+}
