@@ -4,9 +4,10 @@ import './ExpenseForm.css';
 
 export interface ExpenseFormProps {
   onAddExpense: Function,
+  onCancel: Function,
 }
 
-const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
+const ExpenseForm = ({ onAddExpense, onCancel }: ExpenseFormProps) => {
   const defaultFormValue: ExpenseItemProps = {
     id: '',
     title: '',
@@ -25,6 +26,8 @@ const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => changeFormValue('title', event.target.value);
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => changeFormValue('price', event.target.value);
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => changeFormValue('date', event.target.value);
+  const handleCancelClick = () => onCancel(true);
+
 
   const formSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -48,7 +51,7 @@ const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
       </div>
     </div>
     <div className='new-expense__actions'>
-      <button type='button'>Cancel</button>
+      <button type='button' onClick={handleCancelClick}>Cancel</button>
       <button type='submit'>Add Expense</button>
     </div>
   </form>
